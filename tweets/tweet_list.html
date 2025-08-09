@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Timeline</title>
+</head>
+<body>
+  <h1>Timeline</h1>
+  <p><a href="{% url 'tweet_create' %}">+ New Tweet</a></p>
+
+  {% for t in tweets %}
+    <article style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
+      <div><strong>{{ t.created_at|date:"Y-m-d H:i" }}</strong></div>
+      <p>{{ t.content }}</p>
+      {% if t.image %}
+        <div>
+          <img src="{{ t.image.url }}" style="max-width:300px; height:auto;" alt="tweet image">
+        </div>
+      {% endif %}
+    </article>
+  {% empty %}
+    <p>No tweets yet

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>New Tweet</title>
+</head>
+<body>
+  <h1>Create a Tweet</h1>
+  <p><a href="{% url 'tweet_list' %}">← Back to timeline</a></p>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <p>
+      {{ form.content.label_tag }}<br>
+      {{ form.content.errors }}
+      {{ form.content }}
+    </p>
+    <p>
+      {{ form.image.label_tag }}<br>
+      {{ form.image.errors }}
+      {{ form.image }}
+    </p>
+    <button type="submit">Tweet</button>
+  </form>
+</body>
+</html>
